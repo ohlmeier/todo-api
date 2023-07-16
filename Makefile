@@ -1,8 +1,10 @@
 build:
-	go build -o bin/main main.go
+	go build -o bin/todo main.go
 
 build-linux:
-	GOOS=linux GOARCH=amd64 go build -o bin/main main.go
+	set GOOS=linux
+	set GOARCH=amd64
+	go build -o bin/todo main.go
 
 run:
 	go run main.go
