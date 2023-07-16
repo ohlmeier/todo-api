@@ -17,14 +17,14 @@ func CreateList(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(list)
 }
 
-func GetListtById(w http.ResponseWriter, r *http.Request) {
-	listId := mux.Vars(r)["id"]
-	if !listExists(listId) {
+func GetListById(w http.ResponseWriter, r *http.Request) {
+	id := mux.Vars(r)["id"]
+	if !listExists(id) {
 		w.WriteHeader(http.StatusNotFound)
 		return
 	}
 	var list todo.List
-	database.Instance.First(&list, listId)
+	database.Instance.First(&list, id)
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(list)
 }
@@ -52,13 +52,13 @@ func UpdateList(w http.ResponseWriter, r *http.Request) {
 
 func DeleteList(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	listId := mux.Vars(r)["id"]
-	if !listExists(listId) {
+	id := mux.Vars(r)["id"]
+	if !listExists(id) {
 		w.WriteHeader(http.StatusNotFound)
 		return
 	}
 	var list todo.List
-	database.Instance.Delete(&list, listId)
+	database.Instance.Delete(&list, id)
 	json.NewEncoder(w).Encode("List Deleted Successfully")
 }
 
