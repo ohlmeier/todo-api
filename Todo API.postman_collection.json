@@ -1,0 +1,248 @@
+{
+	"info": {
+		"_postman_id": "f2ac8b5b-56a9-4cd9-afa5-c81855e0b04e",
+		"name": "Todo API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30528346"
+	},
+	"item": [
+		{
+			"name": "items",
+			"item": [
+				{
+					"name": "Get Todo List Items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/todo/lists/:listid/items",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"todo",
+								"lists",
+								":listid",
+								"items"
+							],
+							"variable": [
+								{
+									"key": "listid",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Todo List Item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n    \"id\":1,\n    \"name\":\"Apples\",\n    \"done\":false,\n    \"listID\":1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/todo/lists/:listid/items",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"todo",
+								"lists",
+								":listid",
+								"items"
+							],
+							"variable": [
+								{
+									"key": "listid",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Todo List Item",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Apple\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/todo/lists/:listid/items/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"todo",
+								"lists",
+								":listid",
+								"items",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "listid",
+									"value": "1"
+								},
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Todo List Item",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/todo/lists/:listid/items/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"todo",
+								"lists",
+								":listid",
+								"items",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "listid",
+									"value": ""
+								},
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Todo Lists",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Create Todo List",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":1,\n    \"name\":\"Shopping\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/todo/lists",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"todo",
+						"lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Todo List",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Shopping\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/todo/lists/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"todo",
+						"lists",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Todo List",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/todo/lists/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"todo",
+						"lists",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

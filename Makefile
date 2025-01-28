@@ -28,9 +28,13 @@ build: download bin
 build-linux: download bin
 	CGO_ENABLED=0 GOARCH=amd64 GOOS=linux go build -ldflags="-w -s" -o bin ./...
 
+.PHONY: docker
+docker:
+	docker build -t todo:latest .
+
 .PHONY: run
 run:
-	go run main.go
+	PORT=8081 DB_USER=user1 DB_PASSWORD=changeme DB_HOST=localhost:5432 DB_NAME=tododb go run main.go
 
 .PHONY: help
 help: ## show help

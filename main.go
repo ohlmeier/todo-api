@@ -17,8 +17,7 @@ func main() {
 	password := os.Getenv("DB_PASSWORD")
 	host := os.Getenv("DB_HOST")
 	db := os.Getenv("DB_NAME")
-	database.Connect(user, password, host, db)
-	database.Migrate()
+	database.Init(user, password, host, db)
 
 	router := mux.NewRouter().StrictSlash(false)
 

@@ -5,27 +5,21 @@ import (
 	"log"
 
 	"github.com/ohlmeier/todo-api/todo"
-	"gorm.io/driver/mysql"
+	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
-var (
-	Instance *gorm.DB
-	err      error
-)
+var Instance *gorm.DB
 
-func Connect(user, password, host, db string) {
-	dsn := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8mb4&parseTime=True&loc=Local", user, password, host, db)
-	Instance, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
+func Init(user, password, host, db string) {
+	dbURL := fmt.Sprintf("postgres://%s:%s@%s/%s", user, password, host, db)
+	var err error
+	Instance, err = gorm.Open(postgres.Open(dbURL), &gorm.Config{})
+
 	if err != nil {
-		log.Fatal(err)
-		panic("Cannot connect to DB")
+		log.Fatalln(err)
 	}
-	log.Println("Connected to Database...")
-}
 
-func Migrate() {
 	Instance.AutoMigrate(&todo.List{})
 	Instance.AutoMigrate(&todo.Item{})
-	log.Println("Database Migration Completed...")
 }
